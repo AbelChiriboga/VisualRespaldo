@@ -12,7 +12,8 @@ public class PanelHuella extends PanelGrupo implements biometria.AvisoCaptura {
     private final JLabel lblEstado = new JLabel(" ");
     private final BotonSistema botonRepetir = new BotonSistema("Registrar otra vez");
 
-    private final JPanel pnlEstudiante = new JPanel(new GridLayout(4, 1, 0, 4));
+    private final JPanel pnlEstudiante = new JPanel(new BorderLayout(0, 4));
+    private final JPanel pnlDatosEstudiante = new JPanel(new GridLayout(3, 1, 0, 4));
     private final JLabel lblNombre = new JLabel("—");
     private final JLabel lblDatos = new JLabel("<html>Cédula: —<br>Carrera: —</html>");
     private final JLabel lblActivos = new JLabel("Préstamos activos: — de 3");
@@ -69,11 +70,13 @@ public class PanelHuella extends PanelGrupo implements biometria.AvisoCaptura {
         lblNombre.setPreferredSize(new Dimension(10, 24));
         lblDatos.setPreferredSize(new Dimension(10, 40));
         lblActivos.setPreferredSize(new Dimension(10, 20));
-        lblEstadoEstudiante.setPreferredSize(new Dimension(10, 40));
-        pnlEstudiante.add(lblNombre);
-        pnlEstudiante.add(lblDatos);
-        pnlEstudiante.add(lblActivos);
-        pnlEstudiante.add(lblEstadoEstudiante);
+        lblEstadoEstudiante.setBorder(BorderFactory.createEmptyBorder(10, 6, 10, 6));
+        pnlDatosEstudiante.setOpaque(false);
+        pnlDatosEstudiante.add(lblNombre);
+        pnlDatosEstudiante.add(lblDatos);
+        pnlDatosEstudiante.add(lblActivos);
+        pnlEstudiante.add(pnlDatosEstudiante, BorderLayout.CENTER);
+        pnlEstudiante.add(lblEstadoEstudiante, BorderLayout.SOUTH);
 
         lblDedo.setFont(util.Estilos.FUENTE);
         cbxDedo.setFont(util.Estilos.FUENTE);
@@ -241,7 +244,7 @@ public class PanelHuella extends PanelGrupo implements biometria.AvisoCaptura {
         lblDatos.setText("<html>" + datos.replace("\n", "<br>") + "</html>");
         lblDatos.setToolTipText(datos);
         lblActivos.setText(activos);
-        lblEstadoEstudiante.setText("<html><div style='text-align:center'>" + estado + "</div></html>");
+        lblEstadoEstudiante.setText("<html><div style='width:170px;text-align:center'>" + estado + "</div></html>");
         lblEstadoEstudiante.setBackground(ok ? FONDO_OK : FONDO_NO);
         lblEstadoEstudiante.setForeground(ok ? util.Estilos.VERDE_TITULO : new Color(138, 58, 18));
     }
