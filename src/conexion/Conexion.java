@@ -20,8 +20,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
                conectar = DriverManager.getConnection("jdbc:mysql://localhost/biblioteca_huella","root","");
-            
-            
+                        
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
