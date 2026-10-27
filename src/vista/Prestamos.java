@@ -17,6 +17,7 @@ public class Prestamos extends componentes.VentanaBase {
             e.getCodigoInventario(), e.getLibro().getTitulo(), e.getLibro().getAutor(), e.getUbicacion()});
         tabla.usarBarra(barraBuscar);
         tabla.alMarcar(this::actualizarResumen);
+        tabla.limitarMarcados(this::maximoSeleccionable, this::avisarMaximo);
         lectura = new LecturaHuella(this, jpnlHuella, servicio::identificar, this::estudianteIdentificado,
                 servicio::cancelarLectura);
         alCambiarLector(lectura::lectorCambio);
@@ -24,11 +25,26 @@ public class Prestamos extends componentes.VentanaBase {
     }
 
     private void confirmarPrestamo() {
-        ejecutar(() -> {
+        boolean hecho = ejecutar(() -> {
             java.util.List<modelo.Prestamo> hechos = servicio.prestar(lectura.getFicha(), tabla.getMarcados());
             util.Mensajes.info(this, comprobante(hechos));
             nuevoPrestamo();
         });
+        if (!hecho && lectura.getFicha() == null) {
+            tabla.marcarTodos(false);
+        }
+    }
+
+    private int maximoSeleccionable() {
+        int[] maximo = {Integer.MAX_VALUE};
+        ejecutar(() -> maximo[0] = servicio.maximoSeleccionable(lectura.getFicha()));
+        return maximo[0];
+    }
+
+    private void avisarMaximo(int maximo) {
+        util.Mensajes.error(this, new excepciones.NegocioException(maximo == 0
+                ? "Este estudiante ya no puede llevar más libros."
+                : "Ya seleccionó el máximo de " + maximo + " libro(s)."));
     }
 
     private void nuevoPrestamo() {
