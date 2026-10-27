@@ -1,4 +1,4 @@
-package servicio.regla;
+package servicio.reglas;
 
 import java.util.Optional;
 import servicio.FichaEstudiante;
