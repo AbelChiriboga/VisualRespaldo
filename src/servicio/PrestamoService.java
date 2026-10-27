@@ -41,6 +41,11 @@ public class PrestamoService extends AtencionConHuella {
         return LocalDate.now().plusDays(parametroDAO.obtenerEntero(Parametro.DIAS_PRESTAMO));
     }
 
+    /** Cuántos libros se pueden marcar: sin huella, el máximo del parámetro; con huella, los cupos que le quedan. */
+    public int maximoSeleccionable(FichaEstudiante ficha) {
+        return ficha == null ? parametroDAO.obtenerEntero(Parametro.MAX_PRESTAMOS) : ficha.getCupos();
+    }
+
     public Optional<String> motivoBloqueo(FichaEstudiante ficha) {
         return primerIncumplimiento(ficha, 1);
     }
