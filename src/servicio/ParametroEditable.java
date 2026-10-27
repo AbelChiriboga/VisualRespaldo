@@ -32,7 +32,7 @@ public enum ParametroEditable {
     UMBRAL_HUELLA(Parametro.UMBRAL_HUELLA, "umbral de huella") {
         @Override
         public String validar(String valor) {
-            return String.valueOf(Validaciones.entero(valor, getNombre(), 1, 1000));
+            return String.valueOf(Validaciones.entero(valor, getNombre(), 1, 100));
         }
     };
 
