@@ -1,6 +1,5 @@
 package biometria;
 
-import excepciones.LectorException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import javax.swing.*;
@@ -81,10 +80,10 @@ public class LectorSimulado extends LectorBase {
                 SwingUtilities.invokeAndWait(pedir);
             }
         } catch (InterruptedException | InvocationTargetException e) {
-            throw new LectorException("Captura cancelada.");
+            throw new excepciones.CapturaCanceladaException();
         }
         if (respuesta[0] == null || respuesta[0].isBlank()) {
-            throw new LectorException("No se detectó el dedo.");
+            throw new excepciones.CapturaCanceladaException();
         }
         ultimoCodigo = respuesta[0].trim();
         ultimaImagen = dibujarHuella(ultimoCodigo);
