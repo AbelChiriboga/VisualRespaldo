@@ -95,7 +95,7 @@ public class LectorZKTeco extends LectorBase {
             long limite = System.currentTimeMillis() + ESPERA_DEDO_MS;
             while (System.currentTimeMillis() < limite) {
                 if (cancelada) {
-                    throw new LectorException("Captura cancelada.");
+                    throw new excepciones.CapturaCanceladaException();
                 }
                 byte[] plantilla = intentarCaptura();
                 if (plantilla != null) {
@@ -299,7 +299,7 @@ public class LectorZKTeco extends LectorBase {
             Thread.sleep(PAUSA_MS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            throw new LectorException("Captura cancelada.");
+            throw new excepciones.CapturaCanceladaException();
         }
     }
 }
