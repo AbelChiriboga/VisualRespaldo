@@ -20,4 +20,9 @@ public abstract class BibliotecaException extends RuntimeException {
     public Reaccion getReaccion() {
         return Reaccion.MOSTRAR_ERROR;
     }
+
+    /** true si de verdad se puso un dedo y falló; solo esos intentos van a la bitácora como fallos. */
+    public boolean esIntentoConDedo() {
+        return true;
+    }
 }
