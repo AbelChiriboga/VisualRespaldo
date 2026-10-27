@@ -11,4 +11,9 @@ public class SinDedoException extends LectorException {
     public Reaccion getReaccion() {
         return Reaccion.REINTENTAR;
     }
+
+    @Override
+    public boolean esIntentoConDedo() {
+        return false;
+    }
 }
