@@ -38,6 +38,7 @@ public class DevolucionService extends AtencionConHuella {
             throw new ValidacionException("Seleccione al menos un libro.");
         }
         exigirQueSeanSuyos(ficha, marcados);
+        exigirFechaPosteriorAlPrestamo(marcados);
         List<Integer> ids = marcados.stream().map(Prestamo::getId).collect(Collectors.toList());
         prestamoDAO.registrarDevoluciones(ids);
         anotarExito(ficha, "Devolución de " + ids.size() + " libro(s): " + marcados.stream()
@@ -50,6 +51,18 @@ public class DevolucionService extends AtencionConHuella {
         marcados.stream().filter(p -> !suyos.contains(p.getId())).findFirst().ifPresent(p -> {
             throw new NegocioException("El libro " + p.getEjemplar().getCodigoInventario()
                     + " no está prestado a este estudiante.");
+        });
+    }
+
+    /** La fecha del equipo no puede ser anterior al día en que se prestó el libro (no tendría lógica). */
+    private static void exigirFechaPosteriorAlPrestamo(List<Prestamo> marcados) {
+        java.time.LocalDateTime ahora = java.time.LocalDateTime.now();
+        marcados.stream().filter(p -> ahora.isBefore(p.getFechaPrestamo())).findFirst().ifPresent(p -> {
+            throw new NegocioException("No se puede devolver el libro " + p.getEjemplar().getCodigoInventario()
+                    + " antes de la fecha en que se prestó.\n"
+                    + "Fecha del préstamo: " + util.Formatos.fechaHora(p.getFechaPrestamo()) + "\n"
+                    + "Fecha del equipo: " + util.Formatos.fechaHora(ahora) + "\n"
+                    + "Revise la fecha y hora del equipo.");
         });
     }
 
