@@ -18,10 +18,16 @@ public class Login extends javax.swing.JFrame {
         armarLogin();
         estiloSalir();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowOpened(java.awt.event.WindowEvent e) {
                 jtxtUsuario.requestFocusInWindow();
+            }
+
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                salir();
             }
         });
     }
@@ -213,7 +219,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void salir() {
-        System.exit(0);
+        if (util.Mensajes.confirmar(this, "¿Está seguro de salir del sistema?")) {
+            System.exit(0);
+        }
     }
 
    public void InicializarElementos() {
