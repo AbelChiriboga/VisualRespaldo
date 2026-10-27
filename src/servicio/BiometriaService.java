@@ -77,8 +77,10 @@ public class BiometriaService {
         try {
             return lector.registrar(aviso);
         } catch (BibliotecaException ex) {
-            anotar(idParaBitacora(e), OperacionAutenticacion.REGISTRO_HUELLA, ResultadoAutenticacion.FALLO, null,
-                    ex.getMessage());
+            if (ex.esIntentoConDedo()) {
+                anotar(idParaBitacora(e), OperacionAutenticacion.REGISTRO_HUELLA, ResultadoAutenticacion.FALLO, null,
+                        ex.getMessage());
+            }
             throw ex;
         }
     }
