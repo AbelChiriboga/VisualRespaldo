@@ -78,7 +78,7 @@ public class LecturaHuella {
             return;
         }
         ficha = f;
-        panel.mostrarResultado("Huella reconocida", true);
+        panel.mostrarEstudianteReconocido();
         panel.mostrarAvance(0, " ");
         alIdentificar.accept(f);
     }
