@@ -88,6 +88,27 @@ public class TablaObjetos<T> {
         }
     }
 
+    /**
+     * No deja marcar más filas que {@code maximo}: si se pasa, desmarca la última y avisa con {@code alExceder}
+     * (que recibe el máximo permitido).
+     */
+    public void limitarMarcados(IntSupplier maximo, IntConsumer alExceder) {
+        tabla.getModel().addTableModelListener(e -> {
+            if (e.getType() != javax.swing.event.TableModelEvent.UPDATE || e.getColumn() != 0
+                    || e.getFirstRow() != e.getLastRow() || e.getFirstRow() < 0) {
+                return;
+            }
+            int fila = e.getFirstRow();
+            int tope = maximo.getAsInt();
+            if (Boolean.TRUE.equals(tabla.getModel().getValueAt(fila, 0)) && getMarcados().size() > tope) {
+                SwingUtilities.invokeLater(() -> {
+                    tabla.getModel().setValueAt(Boolean.FALSE, fila, 0);
+                    alExceder.accept(tope);
+                });
+            }
+        });
+    }
+
     public void alMarcar(Runnable accion) {
         tabla.getModel().addTableModelListener(e -> {
             if (e.getType() == javax.swing.event.TableModelEvent.UPDATE && e.getColumn() == 0) {
