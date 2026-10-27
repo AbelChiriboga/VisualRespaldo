@@ -26,7 +26,7 @@ public class Parametros extends componentes.VentanaBase {
         util.TipoEntrada.NUMEROS.aplicar(jtxtDias, 2);
         util.TipoEntrada.NUMEROS.aplicar(jtxtMaxPrestamos, 2);
         util.TipoEntrada.DECIMAL.aplicar(jtxtMultaDia, 5);
-        util.TipoEntrada.NUMEROS.aplicar(jtxtUmbralHuella, 4);
+        util.TipoEntrada.NUMEROS.aplicar(jtxtUmbralHuella, 3);
         formulario
                 .campo(jtxtDias, () -> servicio.ParametroEditable.DIAS_PRESTAMO.validar(jtxtDias.getText()))
                 .campo(jtxtMaxPrestamos, () -> servicio.ParametroEditable.MAX_PRESTAMOS.validar(jtxtMaxPrestamos.getText()))
