@@ -148,8 +148,31 @@ public class PanelHuella extends PanelGrupo implements biometria.AvisoCaptura {
         javax.swing.SwingUtilities.invokeLater(() -> mostrarImagen(huella));
     }
 
+    /** Imagen representativa del estudiante (no es su foto real) para cuando su huella fue reconocida. */
+    private static final java.awt.image.BufferedImage FOTO_ESTUDIANTE = cargar("/imagenes/estudianteVista.png");
+
+    private static java.awt.image.BufferedImage cargar(String ruta) {
+        try {
+            java.net.URL url = PanelHuella.class.getResource(ruta);
+            return url == null ? null : javax.imageio.ImageIO.read(url);
+        } catch (java.io.IOException e) {
+            return null;
+        }
+    }
+
+    /** Huella reconocida: muestra la imagen del estudiante en el recuadro. */
+    public void mostrarEstudianteReconocido() {
+        if (FOTO_ESTUDIANTE != null) {
+            mostrarImagen(FOTO_ESTUDIANTE, 130);
+        }
+        mostrarResultado("Huella reconocida", true);
+    }
+
     public void mostrarImagen(java.awt.image.BufferedImage huella) {
-        int lado = 150;
+        mostrarImagen(huella, 150);
+    }
+
+    private void mostrarImagen(java.awt.image.BufferedImage huella, int lado) {
         double escala = Math.min((double) lado / huella.getWidth(), (double) lado / huella.getHeight());
         java.awt.Image chica = huella.getScaledInstance((int) (huella.getWidth() * escala),
                 (int) (huella.getHeight() * escala), java.awt.Image.SCALE_SMOOTH);
