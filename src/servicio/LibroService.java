@@ -21,11 +21,14 @@ public class LibroService extends ServicioCrud<Libro> {
         this.libroDAO = dao;
     }
 
-    /** Guarda un libro nuevo junto con los ejemplares que se agregaron antes de guardarlo (pueden ser cero). */
+    /** Guarda un libro nuevo junto con sus ejemplares: debe tener al menos uno. */
     public void crear(Libro l, List<modelo.Ejemplar> ejemplares) {
         exigirPermiso();
         util.Validaciones.requerido(l, "un libro");
         validar(l);
+        if (ejemplares.isEmpty()) {
+            throw new excepciones.ValidacionException("Agregue al menos un ejemplar con el botón Ejemplares.");
+        }
         libroDAO.insertarConEjemplares(l, ejemplares);
     }
 
