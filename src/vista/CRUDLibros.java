@@ -70,7 +70,7 @@ public class CRUDLibros extends componentes.VentanaBase {
         if (!formulario.validar()) {
             return;
         }
-        ejecutar(() -> {
+        boolean guardado = ejecutar(() -> {
             actual.setIsbn(jtxtISBN.getText());
             actual.setTitulo(jtxtTitulo.getText());
             actual.setAutor(componentes.Combos.seleccionado(jcbxAutor));
@@ -86,6 +86,9 @@ public class CRUDLibros extends componentes.VentanaBase {
             util.Mensajes.info(this, "Libro guardado correctamente\n" + cantidad + (cantidad == 1 ? " ejemplar" : " ejemplares"));
             cancelar();
         });
+        if (!guardado && actual != null && actual.esNuevo() && ejemplares.listar().isEmpty()) {
+            jbtnEjemplares.requestFocus();
+        }
     }
 
     private void eliminar() {
