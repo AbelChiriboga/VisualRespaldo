@@ -1,5 +1,6 @@
 package vista;
 
+import componentes.*;
 /** Préstamos atrasados y multas pendientes. */
 public class Atrasos extends componentes.VentanaBase {
 
@@ -9,7 +10,7 @@ public class Atrasos extends componentes.VentanaBase {
 
     public Atrasos() {
         initComponents();
-        montar("PRÉSTAMOS ATRASADOS Y MULTAS", jpnlContenido);
+         montar("PRÉSTAMOS ATRASADOS Y MULTAS", jpnlContenido);
         componentes.Tablas.soloLectura(jtblAtrasos, jScrollPane1,
                 "Cédula", "Estudiante", "Correo", "Teléfono", "Libro", "Ejemplar", "Fecha límite", "Días", "Multa");
         componentes.Tablas.anchos(jtblAtrasos, 95, 150, 170, 90, 200, 80, 90, 50, 70);
@@ -20,8 +21,10 @@ public class Atrasos extends componentes.VentanaBase {
         jcbxVer.setSelectedIndex(0);
         ejecutar(() -> multaPorDia = servicio.multaPorDia());
         cargar();
+       
     }
-
+    
+    
     private void cargar() {
         ejecutar(() -> tabla.mostrar(tipo().listar(servicio)));
         mostrarTotal();
@@ -97,7 +100,7 @@ public class Atrasos extends componentes.VentanaBase {
 
         jpnlContenido.setBackground(new java.awt.Color(255, 255, 255));
         jpnlContenido.setPreferredSize(new java.awt.Dimension(1098, 520));
-        jpnlContenido.setLayout(new java.awt.BorderLayout(0, 0));
+        jpnlContenido.setLayout(new java.awt.BorderLayout());
 
         jpnlAtrasos.setTitulo("Préstamos atrasados y multas");
         jpnlAtrasos.setLayout(new java.awt.BorderLayout(0, 10));
@@ -114,7 +117,11 @@ public class Atrasos extends componentes.VentanaBase {
 
         jcbxVer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jcbxVer.setPreferredSize(new java.awt.Dimension(200, 32));
-        jcbxVer.addActionListener(this::jcbxVerActionPerformed);
+        jcbxVer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbxVerActionPerformed(evt);
+            }
+        });
         jpnlVer.add(jcbxVer);
 
         jpnlBarra.add(jpnlVer, java.awt.BorderLayout.WEST);
@@ -127,18 +134,30 @@ public class Atrasos extends componentes.VentanaBase {
 
         jbtnActualizar.setText("Actualizar");
         jbtnActualizar.setPreferredSize(new java.awt.Dimension(110, 36));
-        jbtnActualizar.addActionListener(this::jbtnActualizarActionPerformed);
+        jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnActualizarActionPerformed(evt);
+            }
+        });
         jpnlAcciones.add(jbtnActualizar);
 
         jbtnPagar.setText("Registrar pago");
         jbtnPagar.setPrimario(true);
         jbtnPagar.setPreferredSize(new java.awt.Dimension(150, 36));
-        jbtnPagar.addActionListener(this::jbtnPagarActionPerformed);
+        jbtnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPagarActionPerformed(evt);
+            }
+        });
         jpnlAcciones.add(jbtnPagar);
 
         jbtnGenReporte.setText("Generar reporte");
         jbtnGenReporte.setPreferredSize(new java.awt.Dimension(150, 36));
-        jbtnGenReporte.addActionListener(this::jbtnGenReporteActionPerformed);
+        jbtnGenReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGenReporteActionPerformed(evt);
+            }
+        });
         jpnlAcciones.add(jbtnGenReporte);
 
         jpnlBarra.add(jpnlAcciones, java.awt.BorderLayout.EAST);
@@ -150,8 +169,8 @@ public class Atrasos extends componentes.VentanaBase {
         jpnlAtrasos.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jlblTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jlblTotal.setText("Registros: 0");
         jlblTotal.setForeground(new java.awt.Color(31, 43, 51));
+        jlblTotal.setText("Registros: 0");
         jpnlAtrasos.add(jlblTotal, java.awt.BorderLayout.SOUTH);
 
         jpnlContenido.add(jpnlAtrasos, java.awt.BorderLayout.CENTER);

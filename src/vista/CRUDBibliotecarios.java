@@ -205,7 +205,6 @@ public class CRUDBibliotecarios extends componentes.VentanaBase {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         java.awt.GridBagConstraints gridBagConstraints;
 
         jpnlContenido = new javax.swing.JPanel();
@@ -528,28 +527,48 @@ public class CRUDBibliotecarios extends componentes.VentanaBase {
 
         jbtnNuevo.setText("Nuevo");
         jbtnNuevo.setPreferredSize(new java.awt.Dimension(70, 36));
-        jbtnNuevo.addActionListener(this::jbtnNuevoActionPerformed);
+        jbtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNuevoActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnNuevo);
 
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.setPrimario(true);
         jbtnGuardar.setPreferredSize(new java.awt.Dimension(70, 36));
-        jbtnGuardar.addActionListener(this::jbtnGuardarActionPerformed);
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnGuardar);
 
         jbtnEditar.setText("Editar");
         jbtnEditar.setPreferredSize(new java.awt.Dimension(70, 36));
-        jbtnEditar.addActionListener(this::jbtnEditarActionPerformed);
+        jbtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnEditarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnEditar);
 
         jbtnDesactivar.setText("Desactivar");
         jbtnDesactivar.setPreferredSize(new java.awt.Dimension(70, 36));
-        jbtnDesactivar.addActionListener(this::jbtnDesactivarActionPerformed);
+        jbtnDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDesactivarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnDesactivar);
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.setPreferredSize(new java.awt.Dimension(70, 36));
-        jbtnCancelar.addActionListener(this::jbtnCancelarActionPerformed);
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnCancelar);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

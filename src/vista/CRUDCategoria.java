@@ -101,7 +101,6 @@ public class CRUDCategoria extends componentes.VentanaBase {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         java.awt.GridBagConstraints gridBagConstraints;
 
         jpnlContenido = new javax.swing.JPanel();
@@ -156,23 +155,39 @@ public class CRUDCategoria extends componentes.VentanaBase {
 
         jbtnNuevo.setText("Nuevo");
         jbtnNuevo.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnNuevo.addActionListener(this::jbtnNuevoActionPerformed);
+        jbtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNuevoActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnNuevo);
 
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.setPrimario(true);
         jbtnGuardar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnGuardar.addActionListener(this::jbtnGuardarActionPerformed);
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnGuardar);
 
         jbtnEditar.setText("Editar");
         jbtnEditar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnEditar.addActionListener(this::jbtnEditarActionPerformed);
+        jbtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnEditarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnEditar);
 
         jbtnEliminar.setText("Eliminar");
         jbtnEliminar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnEliminar.addActionListener(this::jbtnEliminarActionPerformed);
+        jbtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnEliminarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnEliminar);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -186,7 +201,11 @@ public class CRUDCategoria extends componentes.VentanaBase {
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnCancelar.addActionListener(this::jbtnCancelarActionPerformed);
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -201,8 +220,6 @@ public class CRUDCategoria extends componentes.VentanaBase {
 
         jpnlCategoriasReg.setTitulo("Categorías registradas");
         jpnlCategoriasReg.setLayout(new java.awt.BorderLayout(0, 10));
-
-        barraBuscar.setAyuda("Escriba para buscar");
         jpnlCategoriasReg.add(barraBuscar, java.awt.BorderLayout.NORTH);
 
         jScrollPane1.setViewportView(jtblCategorias);
