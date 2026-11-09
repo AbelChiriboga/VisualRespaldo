@@ -11,7 +11,7 @@ import servicio.reglas.*;
 public class PrestamoService extends AtencionConHuella {
 
     private final List<ReglaPrestamo> reglas = List.of(
-            new EstudianteActivo(), new SinMultasPendientes(), new LimitePrestamos());
+            new EstudianteActivo(), new SinLibrosAtrasados(), new SinMultasPendientes(), new LimitePrestamos());
 
     private final dao.EjemplarDAO ejemplarDAO = new dao.EjemplarDAO();
 
