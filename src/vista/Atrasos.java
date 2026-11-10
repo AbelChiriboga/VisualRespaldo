@@ -15,6 +15,8 @@ public class Atrasos extends componentes.VentanaBase {
                 "Cédula", "Estudiante", "Correo", "Teléfono", "Libro", "Ejemplar", "Fecha límite", "Días", "Multa");
         componentes.Tablas.anchos(jtblAtrasos, 95, 150, 170, 90, 200, 80, 90, 50, 70);
         tabla = new componentes.TablaObjetos<>(jtblAtrasos, this::fila);
+        tabla.permitirVarios();
+        jbtnPagar.setToolTipText("Seleccione una o varias multas del mismo estudiante (Ctrl o Shift + clic)");
         tabla.usarBarra(barraBuscar);
         tabla.alSeleccionar(p -> actualizarBotones());
         componentes.Combos.llenar(jcbxVer, servicio.TipoAtraso.class);
@@ -33,11 +35,14 @@ public class Atrasos extends componentes.VentanaBase {
 
     private void registrarPago() {
         ejecutar(() -> {
-            modelo.Prestamo p = tabla.exigirSeleccionado("una multa");
-            if (util.Mensajes.confirmar(this, "¿Registrar el pago de " + p.getMulta().getMontoTexto()
-                    + " de " + p.getEstudiante().getNombreCompleto() + "?")) {
-                servicio.registrarPago(p);
-                util.Mensajes.info(this, "Pago registrado.");
+            java.util.List<modelo.Prestamo> elegidas = tabla.getSeleccionados();
+            servicio.verificarPago(elegidas);
+            String total = util.Formatos.dinero(servicio.total(elegidas));
+            String estudiante = elegidas.get(0).getEstudiante().getNombreCompleto();
+            if (util.Mensajes.confirmar(this, "¿Registrar el pago de " + elegidas.size() + " multa(s) de "
+                    + estudiante + "?\nTotal: " + total)) {
+                servicio.registrarPagos(elegidas);
+                util.Mensajes.info(this, "Pago registrado.\n" + elegidas.size() + " multa(s), total " + total + ".");
                 cargar();
             }
         });
@@ -62,7 +67,7 @@ public class Atrasos extends componentes.VentanaBase {
     }
 
     private void actualizarBotones() {
-        jbtnPagar.setEnabled(tipo().permitePago() && tabla.getSeleccionado().isPresent());
+        jbtnPagar.setEnabled(tipo().permitePago() && !tabla.getSeleccionados().isEmpty());
     }
 
     private void generarReporte() {
