@@ -60,7 +60,18 @@ public class MultaDAO extends BaseDAO<Multa, Integer> {
         return r.get(0);
     }
 
+    private static final String PAGAR = "UPDATE multas SET pagada = 1, fecha_pago = NOW() WHERE id_multa = ? AND pagada = 0";
+
     public void marcarPagada(int idMulta) {
-        ejecutar("UPDATE multas SET pagada = 1, fecha_pago = NOW() WHERE id_multa = ? AND pagada = 0", idMulta);
+        ejecutar(PAGAR, idMulta);
+    }
+
+    /** Paga varias multas juntas: se registran todas o ninguna. */
+    public void marcarPagadas(List<Integer> idsMulta) {
+        enTransaccion(cn -> {
+            for (Integer id : idsMulta) {
+                ejecutar(cn, PAGAR, id);
+            }
+        });
     }
 }
