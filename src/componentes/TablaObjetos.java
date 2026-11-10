@@ -44,6 +44,20 @@ public class TablaObjetos<T> {
         return fila < 0 ? Optional.empty() : Optional.of(datos.get(tabla.convertRowIndexToModel(fila)));
     }
 
+    /** Permite seleccionar varias filas con Ctrl o Shift + clic (o Ctrl + A para todas). */
+    public void permitirVarios() {
+        tabla.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    }
+
+    /** Todos los objetos de las filas seleccionadas. */
+    public List<T> getSeleccionados() {
+        List<T> elegidos = new ArrayList<>();
+        for (int fila : tabla.getSelectedRows()) {
+            elegidos.add(datos.get(tabla.convertRowIndexToModel(fila)));
+        }
+        return elegidos;
+    }
+
     public T exigirSeleccionado(String que) {
         return getSeleccionado().orElseThrow(() -> new ValidacionException("Seleccione " + que + "."));
     }
