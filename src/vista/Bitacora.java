@@ -77,7 +77,6 @@ public class Bitacora extends componentes.VentanaBase {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -217,7 +216,11 @@ public class Bitacora extends componentes.VentanaBase {
         jbtnAplicar.setText("Aplicar");
         jbtnAplicar.setPrimario(true);
         jbtnAplicar.setPreferredSize(new java.awt.Dimension(110, 36));
-        jbtnAplicar.addActionListener(this::jbtnAplicarActionPerformed);
+        jbtnAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAplicarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -239,23 +242,19 @@ public class Bitacora extends componentes.VentanaBase {
         jpnlIndicadores.setLayout(new java.awt.GridLayout(1, 4, 16, 0));
 
         jpnlIntentosHoy.setTitulo("Intentos hoy");
-        jpnlIntentosHoy.setValor("—");
         jpnlIntentosHoy.setDetalle("— en el periodo");
         jpnlIndicadores.add(jpnlIntentosHoy);
 
         jpnlTasaExito.setTitulo("Tasa de éxito");
-        jpnlTasaExito.setValor("—");
         jpnlTasaExito.setDetalle("— de — en el periodo");
         jpnlIndicadores.add(jpnlTasaExito);
 
         jpnlFallidosHoy.setTitulo("Fallidos hoy");
-        jpnlFallidosHoy.setValor("—");
         jpnlFallidosHoy.setDetalle("— en el periodo");
         jpnlFallidosHoy.setAlerta(true);
         jpnlIndicadores.add(jpnlFallidosHoy);
 
         jpnlPuntaje.setTitulo("Puntaje promedio");
-        jpnlPuntaje.setValor("—");
         jpnlPuntaje.setDetalle("Rechazados: —   ·   Umbral: —");
         jpnlIndicadores.add(jpnlPuntaje);
 
@@ -270,7 +269,7 @@ public class Bitacora extends componentes.VentanaBase {
         jpnlBitacora.add(jpnlIndicadores, gridBagConstraints);
 
         jpnlIntentos.setTitulo("Intentos por día");
-        jpnlIntentos.setLayout(new java.awt.BorderLayout(0, 0));
+        jpnlIntentos.setLayout(new java.awt.BorderLayout());
 
         graficoIntentos.setPreferredSize(new java.awt.Dimension(400, 240));
         jpnlIntentos.add(graficoIntentos, java.awt.BorderLayout.CENTER);
@@ -384,7 +383,6 @@ public class Bitacora extends componentes.VentanaBase {
         gridBagConstraints.insets = new java.awt.Insets(0, 6, 10, 6);
         jpnlOperacion.add(jpgrRegistros, gridBagConstraints);
 
-        jlblNotaUmbral.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jlblNotaUmbral.setText("Puntaje promedio de los rechazados: —");
         jlblNotaUmbral.setForeground(new java.awt.Color(90, 105, 115));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -409,7 +407,7 @@ public class Bitacora extends componentes.VentanaBase {
 
         jpnlDetalles.setTitulo("Detalle de intentos");
         jpnlDetalles.setPreferredSize(new java.awt.Dimension(400, 280));
-        jpnlDetalles.setLayout(new java.awt.BorderLayout(0, 0));
+        jpnlDetalles.setLayout(new java.awt.BorderLayout());
 
         jScrollPane2.setViewportView(jtblIntentos);
 

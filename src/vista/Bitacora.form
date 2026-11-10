@@ -18,6 +18,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,64,0,0,3,87"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -214,27 +215,23 @@
                 <Property name="columns" type="int" value="4"/>
                 <Property name="horizontalGap" type="int" value="16"/>
                 <Property name="rows" type="int" value="1"/>
-                <Property name="verticalGap" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="componentes.TarjetaIndicador" name="jpnlIntentosHoy">
                   <Properties>
                     <Property name="titulo" type="java.lang.String" value="Intentos hoy"/>
-                    <Property name="valor" type="java.lang.String" value="&#x2014;"/>
                     <Property name="detalle" type="java.lang.String" value="&#x2014; en el periodo"/>
                   </Properties>
                 </Component>
                 <Component class="componentes.TarjetaIndicador" name="jpnlTasaExito">
                   <Properties>
                     <Property name="titulo" type="java.lang.String" value="Tasa de &#xe9;xito"/>
-                    <Property name="valor" type="java.lang.String" value="&#x2014;"/>
                     <Property name="detalle" type="java.lang.String" value="&#x2014; de &#x2014; en el periodo"/>
                   </Properties>
                 </Component>
                 <Component class="componentes.TarjetaIndicador" name="jpnlFallidosHoy">
                   <Properties>
                     <Property name="titulo" type="java.lang.String" value="Fallidos hoy"/>
-                    <Property name="valor" type="java.lang.String" value="&#x2014;"/>
                     <Property name="detalle" type="java.lang.String" value="&#x2014; en el periodo"/>
                     <Property name="alerta" type="boolean" value="true"/>
                   </Properties>
@@ -242,7 +239,6 @@
                 <Component class="componentes.TarjetaIndicador" name="jpnlPuntaje">
                   <Properties>
                     <Property name="titulo" type="java.lang.String" value="Puntaje promedio"/>
-                    <Property name="valor" type="java.lang.String" value="&#x2014;"/>
                     <Property name="detalle" type="java.lang.String" value="Rechazados: &#x2014;   &#xb7;   Umbral: &#x2014;"/>
                   </Properties>
                 </Component>
@@ -408,9 +404,6 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jlblNotaUmbral">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="0"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Puntaje promedio de los rechazados: &#x2014;"/>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="73" green="69" red="5a" type="rgb"/>

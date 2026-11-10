@@ -151,7 +151,6 @@ public class CRUDEstudiantes extends componentes.VentanaBase {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         java.awt.GridBagConstraints gridBagConstraints;
 
         jpnlContenido = new javax.swing.JPanel();
@@ -361,28 +360,48 @@ public class CRUDEstudiantes extends componentes.VentanaBase {
 
         jbtnNuevo.setText("Nuevo");
         jbtnNuevo.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnNuevo.addActionListener(this::jbtnNuevoActionPerformed);
+        jbtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnNuevoActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnNuevo);
 
         jbtnGuardar.setText("Guardar");
         jbtnGuardar.setPrimario(true);
         jbtnGuardar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnGuardar.addActionListener(this::jbtnGuardarActionPerformed);
+        jbtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnGuardarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnGuardar);
 
         jbtnEditar.setText("Editar");
         jbtnEditar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnEditar.addActionListener(this::jbtnEditarActionPerformed);
+        jbtnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnEditarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnEditar);
 
         jbtnEliminar.setText("Eliminar");
         jbtnEliminar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnEliminar.addActionListener(this::jbtnEliminarActionPerformed);
+        jbtnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnEliminarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnEliminar);
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnCancelar.addActionListener(this::jbtnCancelarActionPerformed);
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnCancelar);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -411,7 +430,6 @@ public class CRUDEstudiantes extends componentes.VentanaBase {
 
         jpnlContenido.add(jpnlIzquierda, java.awt.BorderLayout.CENTER);
 
-        jpnlHuella.setTitulo("Huella");
         jpnlHuella.setModoRegistro(true);
         jpnlHuella.setPreferredSize(new java.awt.Dimension(280, 400));
         jpnlContenido.add(jpnlHuella, java.awt.BorderLayout.EAST);
@@ -459,10 +477,10 @@ public class CRUDEstudiantes extends componentes.VentanaBase {
     private javax.swing.JLabel jlblSemestre;
     private javax.swing.JLabel jlblTelefono;
     private javax.swing.JPanel jpnlBotones;
-    private javax.swing.JPanel jpnlFila2;
     private javax.swing.JPanel jpnlContenido;
     private componentes.PanelGrupo jpnlDatosEst;
     private componentes.PanelGrupo jpnlEstReg;
+    private javax.swing.JPanel jpnlFila2;
     private componentes.PanelHuella jpnlHuella;
     private javax.swing.JPanel jpnlIzquierda;
     private javax.swing.JTable jtblEstudiantes;

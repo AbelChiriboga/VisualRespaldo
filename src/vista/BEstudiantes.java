@@ -103,7 +103,6 @@ public class BEstudiantes extends componentes.VentanaBase {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         java.awt.GridBagConstraints gridBagConstraints;
 
         jpnlContenido = new javax.swing.JPanel();
@@ -156,7 +155,11 @@ public class BEstudiantes extends componentes.VentanaBase {
 
         jcbxEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jcbxEstado.setPreferredSize(new java.awt.Dimension(130, 32));
-        jcbxEstado.addActionListener(this::jcbxEstadoActionPerformed);
+        jcbxEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbxEstadoActionPerformed(evt);
+            }
+        });
         jpnlFiltro.add(jcbxEstado);
 
         jpnlBarra.add(jpnlFiltro, java.awt.BorderLayout.EAST);
@@ -225,11 +228,9 @@ public class BEstudiantes extends componentes.VentanaBase {
         jpnlIndicadores.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
 
         jpnlPrestamosActivos.setTitulo("Prestados");
-        jpnlPrestamosActivos.setValor("—");
         jpnlIndicadores.add(jpnlPrestamosActivos);
 
         jpnlAtrasados.setTitulo("Atrasados");
-        jpnlAtrasados.setValor("—");
         jpnlAtrasados.setAlerta(true);
         jpnlIndicadores.add(jpnlAtrasados);
 
@@ -264,12 +265,20 @@ public class BEstudiantes extends componentes.VentanaBase {
         jbtnActivar.setText("Activar");
         jbtnActivar.setPrimario(true);
         jbtnActivar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnActivar.addActionListener(this::jbtnActivarActionPerformed);
+        jbtnActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnActivarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnActivar);
 
         jbtnDesactivar.setText("Desactivar");
         jbtnDesactivar.setPreferredSize(new java.awt.Dimension(100, 36));
-        jbtnDesactivar.addActionListener(this::jbtnDesactivarActionPerformed);
+        jbtnDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDesactivarActionPerformed(evt);
+            }
+        });
         jpnlBotones.add(jbtnDesactivar);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

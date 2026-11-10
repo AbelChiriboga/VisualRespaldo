@@ -114,15 +114,12 @@ public class Devoluciones extends componentes.VentanaBase {
         jpnlResumen.setLayout(new java.awt.GridLayout(1, 3, 12, 0));
 
         jpnlDiasRetraso.setTitulo("Días de retraso");
-        jpnlDiasRetraso.setValor("—");
         jpnlResumen.add(jpnlDiasRetraso);
 
         jpnlMultaDia.setTitulo("Multa por día");
-        jpnlMultaDia.setValor("—");
         jpnlResumen.add(jpnlMultaDia);
 
         jpnlTotalPagar.setTitulo("Multa a generar");
-        jpnlTotalPagar.setValor("—");
         jpnlTotalPagar.setAlerta(true);
         jpnlResumen.add(jpnlTotalPagar);
 
@@ -133,13 +130,21 @@ public class Devoluciones extends componentes.VentanaBase {
 
         jbtnCancelar.setText("Cancelar");
         jbtnCancelar.setPreferredSize(new java.awt.Dimension(110, 36));
-        jbtnCancelar.addActionListener(this::jbtnCancelarActionPerformed);
+        jbtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCancelarActionPerformed(evt);
+            }
+        });
         jpnlAcciones.add(jbtnCancelar);
 
         jbtnConfirmar.setText("Confirmar devolución");
         jbtnConfirmar.setPrimario(true);
         jbtnConfirmar.setPreferredSize(new java.awt.Dimension(190, 36));
-        jbtnConfirmar.addActionListener(this::jbtnConfirmarActionPerformed);
+        jbtnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnConfirmarActionPerformed(evt);
+            }
+        });
         jpnlAcciones.add(jbtnConfirmar);
 
         jpnlPie.add(jpnlAcciones, java.awt.BorderLayout.SOUTH);

@@ -42,7 +42,6 @@ public class MenuAdmin extends componentes.VentanaBase {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         java.awt.GridBagConstraints gridBagConstraints;
 
         jpnlContenido = new javax.swing.JPanel();
@@ -169,7 +168,11 @@ public class MenuAdmin extends componentes.VentanaBase {
         jbtnInventario.setTamanoIcono(56);
         jbtnInventario.setTextoAbajo(true);
         jbtnInventario.setPreferredSize(new java.awt.Dimension(120, 116));
-        jbtnInventario.addActionListener(this::jbtnInventarioActionPerformed);
+        jbtnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnInventarioActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -181,7 +184,11 @@ public class MenuAdmin extends componentes.VentanaBase {
         jbtnHistorial.setTamanoIcono(56);
         jbtnHistorial.setTextoAbajo(true);
         jbtnHistorial.setPreferredSize(new java.awt.Dimension(120, 116));
-        jbtnHistorial.addActionListener(this::jbtnHistorialActionPerformed);
+        jbtnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnHistorialActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
